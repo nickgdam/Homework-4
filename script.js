@@ -25,7 +25,7 @@ var questions = [{
 }
 ]
 
-//setting the numerical variables for the functions.. scores and timers.. 
+//setting variables;
 var score = 0;
 var currentQuestion = -1;
 var timeLeft = 0;
@@ -33,16 +33,15 @@ var timer;
 
 
 
-//starts the countdown timer once user clicks the 'start' button
+//starts timeclock upon click of start button;
 function start() {
 
 timeLeft = 75;
 document.getElementById("timeLeft").innerHTML = timeLeft;
-
 timer = setInterval(function() {
     timeLeft--;
     document.getElementById("timeLeft").innerHTML = timeLeft;
-    //proceed to end the game function when timer is below 0 at any time
+    //ends game if timer reachers zero;
     if (timeLeft <= 0) {
         clearInterval(timer);
         endGame(); 
@@ -52,7 +51,6 @@ timer = setInterval(function() {
 next();
 }
 
-//stop the timer to end the game 
 function endGame() {
 clearInterval(timer);
 
@@ -65,18 +63,20 @@ var quizContent = `
 document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-//store the scores on local storage; having trouble storing multiple scores in local storage;
+
+
+//stores highscore to local storage;
 function setScore() {
 localStorage.setItem("highscore", score);
 localStorage.setItem("highscoreName",  document.getElementById('name').value);
 getScore();
 }
 
-
+// shows high score page;
 function getScore() {
 var quizContent = `
-<h2>` + localStorage.getItem("highscoreName") + `'s highscore is:</h2>
-<h1>` + localStorage.getItem("highscore") + `</h1><br> 
+<h2>` + localStorage.getItem("highscoreName", " ") + `'s highscore is:</h2>
+<h1>` + localStorage.getItem("highscore", " ") + `</h1><br> 
 
 <button class="btn btn-primary" style='border-radius: 100px; margin: 5px' onclick="clearScore()">Clear score!</button><button class="btn btn-primary" style='border-radius: 100px' onclick="resetGame()">Play Again!</button>
 
@@ -85,10 +85,10 @@ var quizContent = `
 document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-//clears the score name and value in the local storage if the user selects 'clear score'
+//clears scores out of local storage;
 function clearScore() {
-localStorage.setItem("highscore");
-localStorage.setItem("highscoreName");
+localStorage.setItem("highscore", " ");
+localStorage.setItem("highscoreName", " ");
 
 resetGame();
 }
@@ -97,6 +97,7 @@ resetGame();
 function resetGame() {
 clearInterval(timer);
 score = 0;
+
 currentQuestion = -1;
 timeLeft = 0;
 timer = null;
@@ -115,19 +116,19 @@ var quizContent = `
 document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-//-10seconds from the timer if user chooses an incorrect answer
+//-10 seconds if incorrect answer is chosen;
 function incorrect() {
 timeLeft -= 10; 
 next();
 }
 
-//increases the score by 20points if the user chooses the correct answer
+//+20 points if correct answer is chosen;
 function correct() {
 score += 20;
 next();
 }
 
-//loops through the questions 
+//loops through the questions;
 function next() {
 currentQuestion++;
 
