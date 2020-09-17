@@ -6,32 +6,27 @@
 		<meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script src = "questions.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 	</head>
 	<body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.html">JavaScript Quiz!</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class= "text-secondary" class= "clearfix" class="navbar-brand" onclick="getScore()" href="#"><h4 >View Highscore</h4> <span class="sr-only">(current)</span></a>
-                </li>
-              </ul>
-              <h4 class ="navbar-brand">Time: <span id="timeLeft">0</span></h4>
-            </div>
-          </nav>
+              <ul class="navbar-nav mr-auto"></ul>
+                <a class="navbar-brand" href="#" onclick="getScore()">View Highscore</a>
+       </nav>
 
 		<div class="jumbotron">
+      <h4>Time: <span id="timeLeft">0</span></h4>
 		<div id="quiz">
             <div id="quizBody">      
                 
-                <h2>You will be given 60 seconds to complete the quiz.  If you answer incorrect, your score will go down by 10 points.  Good Luck!!</h2>
+                <h2>You will be given 60 seconds to complete the quiz!  If you answer incorrect, the timer will go down by 10 seconds!  Good Luck!!</h2>
                 <h3>
 					Click start to play!   
                 </h3>
-                <button class="btn btn-primary" onclick="start()">Start!</button>
+                <button id="startBtn" class="btn btn-primary" style="border-radius: 100px" onclick="start()">Start!</button>
             </div>
         </div>
         </div>

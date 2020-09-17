@@ -32,6 +32,7 @@ var timeLeft = 0;
 var timer;
 
 
+
 //starts the countdown timer once user clicks the 'start' button
 function start() {
 
@@ -59,12 +60,12 @@ var quizContent = `
 <h2>Game over!</h2>
 <h3>You got a ` + score +  ` /100!</h3>
 <input type="text" id="name" placeholder="First name"> 
-<button class="btn btn-primary" onclick="setScore()">Set score!</button>`;
+<button class="btn btn-primary" style='border-radius: 100px' onclick="setScore()">Set score!</button>`;
 
 document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-//store the scores on local storage
+//store the scores on local storage; having trouble storing multiple scores in local storage;
 function setScore() {
 localStorage.setItem("highscore", score);
 localStorage.setItem("highscoreName",  document.getElementById('name').value);
@@ -77,7 +78,7 @@ var quizContent = `
 <h2>` + localStorage.getItem("highscoreName") + `'s highscore is:</h2>
 <h1>` + localStorage.getItem("highscore") + `</h1><br> 
 
-<button class="btn btn-primary" onclick="clearScore()">Clear score!</button><button class="btn btn-primary" onclick="resetGame()">Play Again!</button>
+<button class="btn btn-primary" style='border-radius: 100px; margin: 5px' onclick="clearScore()">Clear score!</button><button class="btn btn-primary" style='border-radius: 100px' onclick="resetGame()">Play Again!</button>
 
 `;
 
@@ -86,8 +87,8 @@ document.getElementById("quizBody").innerHTML = quizContent;
 
 //clears the score name and value in the local storage if the user selects 'clear score'
 function clearScore() {
-localStorage.setItem("highscore", "");
-localStorage.setItem("highscoreName",  "");
+localStorage.setItem("highscore");
+localStorage.setItem("highscoreName");
 
 resetGame();
 }
@@ -109,12 +110,12 @@ var quizContent = `
 <h3>
     Click to play!   
 </h3>
-<button class="btn btn-primary" onclick="start()">Start!</button>`;
+<button class="btn btn-primary" style='border-radius: 100px' onclick="start()">Start!</button>`;
 
 document.getElementById("quizBody").innerHTML = quizContent;
 }
 
-//deduct 15seconds from the timer if user chooses an incorrect answer
+//-10seconds from the timer if user chooses an incorrect answer
 function incorrect() {
 timeLeft -= 10; 
 next();
@@ -138,10 +139,11 @@ if (currentQuestion > questions.length - 1) {
 var quizContent = "<h2>" + questions[currentQuestion].title + "</h2>"
 
 for (var buttonLoop = 0; buttonLoop < questions[currentQuestion].choices.length; buttonLoop++) {
-    var buttonCode = "<button style='border-radius: 100px' class='btn btn-primary' onclick=\"[ANS]\">[CHOICE]</button>"; 
+    var buttonCode = "<button style='border-radius: 100px; margin: 5px' class='btn btn-primary' onclick=\"[ANS]\">[CHOICE]</button>"; 
     buttonCode = buttonCode.replace("[CHOICE]", questions[currentQuestion].choices[buttonLoop]);
     if (questions[currentQuestion].choices[buttonLoop] == questions[currentQuestion].answer) {
         buttonCode = buttonCode.replace("[ANS]", "correct()");
+        
     } else {
         buttonCode = buttonCode.replace("[ANS]", "incorrect()");
     }
