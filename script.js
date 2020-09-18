@@ -10,7 +10,7 @@ var questions = [{
 },
 {
     title: "Arrays in Javascript can be used to store ____.",
-    choices: ["Numbers and Strings", "other arrays", "Booleans", "All of the above"],
+    choices: ["Numbers and Strings", "Other arrays", "Booleans", "All of the above"],
     answer: "All of the above",
 },
 {
@@ -36,7 +36,7 @@ var timer;
 //starts timeclock upon click of start button;
 function start() {
 
-timeLeft = 75;
+timeLeft = 60;
 document.getElementById("timeLeft").innerHTML = timeLeft;
 timer = setInterval(function() {
     timeLeft--;
@@ -67,16 +67,16 @@ document.getElementById("quizBody").innerHTML = quizContent;
 
 //stores highscore to local storage;
 function setScore() {
-localStorage.setItem("highscore", score);
-localStorage.setItem("highscoreName",  document.getElementById('name').value);
+localStorage.setItem("highscore", JSON.stringify(score));
+localStorage.setItem("highscoreName",  JSON.stringify(document.getElementById('name').value));
 getScore();
 }
 
 // shows high score page;
 function getScore() {
 var quizContent = `
-<h2>` + localStorage.getItem("highscoreName", " ") + `'s highscore is:</h2>
-<h1>` + localStorage.getItem("highscore", " ") + `</h1><br> 
+<h2>` + localStorage.getItem("highscoreName", (" ")) + `'s highscore is:</h2>
+<h1>` + localStorage.getItem("highscore", (" ")) + `</h1><br> 
 
 <button class="btn btn-primary" style='border-radius: 100px; margin: 5px' onclick="clearScore()">Clear score!</button><button class="btn btn-primary" style='border-radius: 100px' onclick="resetGame()">Play Again!</button>
 
